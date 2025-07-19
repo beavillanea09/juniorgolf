@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LH3 | Free Golf Game Strategy Call for Junior Golfers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Updated Google Fonts: Montserrat for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* NEW GOLF-THEMED COLORS */
+        :root {
+            --primary-green: #4CAF50; /* Grass green */
+            --primary-green-dark: #388E3C; /* Darker green for hover */
+            --primary-green-light: #C8E6C9; /* Light green for backgrounds */
+            --primary-green-ultra-light: #E8F5E9; /* Ultra light green */
+            --accent-gold: #FFD700; /* Gold for highlights */
+            --accent-gradient: linear-gradient(135deg, #4CAF50, #8BC34A); /* Green gradient */
+            --accent-gradient-hover: linear-gradient(135deg, #388E3C, #4CAF50); /* Darker green gradient */
+            --neutral-dark: #2F4F4F; /* Dark slate grey */
+            --neutral-medium: #696969; /* Dim grey */
+            --neutral-light: #DCDCDC; /* Gainsboro */
+            --neutral-ultra-light: #F0F8F0; /* Almost white green */
+            --success-color: #4CAF50;
+            --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-strong: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        body {
+            font-family: 'Inter', sans-serif; /* Kept Inter for body text */
+            background-color: var(--neutral-ultra-light);
+            color: var(--neutral-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif; /* Changed heading font to Montserrat */
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+        h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; }
+        h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3); /* Adjusted for green */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transform: perspective(1px) translateZ(0);
+            text-align: center; /* Added for centering wrapped text */
+        }
+        .btn-primary:hover {
+            background: var(--accent-gradient-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.4); /* Adjusted for green */
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            background-color: white;
+            color: var(--neutral-medium);
+            border: 2px solid #E2E8F0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary-green); /* Adjusted for green */
+            color: var(--primary-green); /* Adjusted for green */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.2); /* Adjusted for green */
+        }
+        .btn-urgent {
+            position: relative;
+            animation: pulse-urgent 2s infinite;
+            background: linear-gradient(135deg, #8BC34A, #4CAF50, #388E3C); /* Green/Gold gradient */
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite, pulse-urgent 2s infinite;
+        }
+        @keyframes pulse-urgent {
+            0%, 100% {
+                box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3); /* Adjusted for green */
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 12px 40px rgba(76, 175, 80, 0.5); /* Adjusted for green */
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .card-enhanced {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid #F1F5F9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .card-enhanced:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+        .card-enhanced:hover::before {
+            transform: scaleX(1);
+        }
+        .hero-enhanced {
+            background: linear-gradient(135deg, var(--primary-green-ultra-light) 0%, white 50%, #F0F8F0 100%); /* Adjusted for green */
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+        .hero-enhanced::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 60%;
+            height: 180%;
+            background: radial-gradient(circle, var(--primary-green-light), transparent 70%); /* Adjusted for green */
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: heroFloat 8s ease-in-out infinite;
+        }
+        .hero-enhanced::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 80%;
+            height: 120%;
+            background: radial-gradient(circle, #D8EFD8, transparent 60%); /* Adjusted for green */
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: heroFloat 10s ease-in-out infinite reverse;
+        }
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(2deg) scale(1.05); }
+            66% { transform: translateY(20px) rotate(-1deg) scale(0.98); }
+        }
+        .value-highlight {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); /* Adjusted for green */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            display: inline-block;
+            position: relative;
+        }
+        .value-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+        .social-proof-banner {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); /* Adjusted for green */
+            color: white;
+            padding: 0.75rem 0;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3); /* Adjusted for green */
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid var(--primary-green); /* Adjusted for green */
+            flex-shrink: 0;
+            min-width: 80%;
+            width: 80%;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                min-width: calc((100% / 2) - 0.75rem);
+                width: calc((100% / 2) - 0.75rem);
+            }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                min-width: calc((100% / 3) - 1rem);
+                width: calc((100% / 3) - 1rem);
+            }
+        }
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 3rem;
+            color: var(--primary-green); /* Adjusted for green */
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif; /* Kept for quote mark style */
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            align-items: stretch;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .results-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+        }
+        .result-stat {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 130px;
+            min-width: 0;
+            width: 100%;
+        }
+        .result-stat:hover {
+            transform: translateY(-8px);
+        }
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .result-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--neutral-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .animate-fade-up {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-fade-up:not(.in-view) {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .animate-fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-scale-in {
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .animate-scale-in:not(.in-view) {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        .animate-scale-in.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .section-enhanced {
+            padding: 4rem 0;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 3.5vw, 3rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, var(--neutral-dark), var(--primary-green)); /* Adjusted for green */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--neutral-medium);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        .scrolling-banner {
+            overflow: hidden;
+            background: var(--primary-green); /* Adjusted for green */
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); /* Adjusted for green */
+        }
+        .scrolling-banner::before,
+        .scrolling-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+        }
+        .scrolling-banner::before {
+            left: 0;
+            background: linear-gradient(to right, var(--primary-green), transparent); /* Adjusted for green */
+        }
+        .scrolling-banner::after {
+            right: 0;
+            background: linear-gradient(to left, var(--primary-green), transparent); /* Adjusted for green */
+        }
+        .banner-content {
+            display: flex;
+            animation: scroll-left 10s linear infinite;
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+        .banner-text {
+            margin-right: 3rem;
+            white-space: nowrap;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .urgency-indicator {
+            background: linear-gradient(135deg, #FF6F61, #FF9C91); /* Softer red for urgency */
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: urgency-pulse 2s infinite;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        @keyframes urgency-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        @media (max-width: 768px) {
+            .section-enhanced {
+                padding: 3rem 0;
+            }
+            .hero-enhanced {
+                padding: 3rem 0;
+            }
+            .btn-primary {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+            .card-enhanced {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .mobile-tagline {
+                font-size: 0.625rem;
+                display: block;
+                line-height: 1.2;
+                margin-left: 0 !important;
+            }
+            header .flex-shrink-0 a .text-2xl {
+                font-size: 1.5rem;
+            }
+        }
+        .accent-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-green); /* Adjusted for green */
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 0.75rem;
+            animation: dot-pulse 2s infinite;
+        }
+        @keyframes dot-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+        .divider-enhanced {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-green), transparent); /* Adjusted for green */
+            margin: 3rem 0;
+        }
+        .icon-enhanced {
+            background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green-ultra-light)); /* Adjusted for green */
+            border-radius: 20px;
+            padding: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        .icon-enhanced:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .icon-enhanced i {
+            color: var(--primary-green); /* Adjusted for green */
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        .floating-cta {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 1000;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4); /* Adjusted for green */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: floating-bounce 3s ease-in-out infinite;
+        }
+        .floating-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: var(--accent-gradient-hover);
+            box-shadow: 0 15px 45px rgba(76, 175, 80, 0.5); /* Adjusted for green */
+        }
+        @keyframes floating-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .contact-form {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            border: 1px solid #F1F5F9;
+        }
+        .contact-form .form-group {
+            margin-bottom: 1rem;
+        }
+        .contact-form label {
+            display: block;
+            color: var(--neutral-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: var(--neutral-dark);
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-green); /* Adjusted for green */
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* Adjusted for green */
+            transform: translateY(-1px);
+        }
+        .contact-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .success-message {
+            background: linear-gradient(135deg, #4CAF50, #45A049);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        #testimonial-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 0.5rem 0;
+        }
+        #testimonial-carousel-track {
+            display: flex;
+            gap: 0.75rem;
+            animation: scroll-x linear infinite var(--animation-duration);
+            will-change: transform;
+        }
+        #testimonial-carousel-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes scroll-x {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        /* Timer Specific Styles */
+        .timer-container {
+            background: var(--primary-green-dark); /* Dark green background */
+            color: white;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .timer-value {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800; /* font-extrabold */
+            letter-spacing: 0.05em;
+            color: var(--accent-gold); /* Gold for the numbers */
+            line-height: 1;
+        }
+        .timer-label {
+            font-size: 0.875rem; /* text-sm */
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.8;
+            margin-top: 0.25rem;
+        }
+        .limited-slots-message {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-top: 1rem;
+            background-color: var(--primary-green);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            animation: pulse-slots 1.5s infinite ease-in-out;
+        }
+        @keyframes pulse-slots {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.9; }
+        }
+        .hero-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(var(--primary-green-dark-rgb), 0.7), transparent); /* Adjusted for green */
+            border-radius: 3rem; /* Same as image rounded-3xl */
+            pointer-events: none; /* Allows clicks to pass through */
+        }
+        .hero-enhanced img {
+            border: 4px solid var(--accent-gold); /* Gold border for hero image */
+        }
+        /* New style for placeholder images in the tailored coaching section */
+        .coaching-stage-image {
+            width: 100%; /* Make image responsive within its container */
+            height: 150px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 16px; /* Slightly rounded corners */
+            margin-bottom: 1rem; /* Space below the image */
+            box-shadow: var(--shadow-soft); /* Soft shadow */
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero-enhanced">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="animate-fade-up relative z-10">
+                        <div class="inline-flex items-center bg-white/70 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-green-200">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                            <span class="text-sm font-medium text-gray-700">🏌️‍♀️ Parents: Give Your Junior Golfer the Edge!</span>
+                        </div>
+                        <h1 class="mb-6 font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center lg:text-left">
+                            Future Golf Stars: <span style="color: var(--primary-green);">Transform Their Game, Ignite Their Passion.</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed font-medium text-center lg:text-left">
+                            I help junior golfers (ages 8-19) build confidence, master their mental game, and develop consistent skills — without endless, frustrating practice. Through personalized strategies, your child will learn to play smarter, enjoy the game more, and be ready for <strong class="text-green-600">high school, college, and competitive golf!</strong>
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
+                            <!-- HERO SECTION BUTTON - NOW SCROLLS TO CONTACT -->
+                            <a href="#contact" class="btn-primary btn-urgent">
+                                <i data-lucide="calendar" class="mr-2 h-5 w-5"></i>
+                                BOOK YOUR <strong> FREE <br></strong> STRATEGY CALL NOW!</br>
+                            </a>
+                            <!-- This button now scrolls to testimonials -->
+                            <a href="#testimonials" class="btn-secondary relative z-20">
+                                <i data-lucide="trending-up" class="mr-2 h-4 w-4"></i>
+                                See Success Stories
+                            </a>
+                        </div>
+                        <!-- Credibility indicators -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                            <div class="flex items-center justify-center lg:justify-start">
+                                <i data-lucide="check-circle" class="h-4 w-4 mr-2 text-green-500"></i>
+                                <span class="text-gray-600">Youth Golf Program Aligned</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start">
+                                <i data-lucide="check-circle" class="h-4 w-4 mr-2 text-green-500"></i>
+                                <span class="text-gray-600">College Prep & Scholarship Focus</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start">
+                                <i data-lucide="check-circle" class="h-4 w-4 mr-2 text-green-500"></i>
+                                <span class="text-gray-600">Fun & Engaging Sessions</span>
+                            </div>
+                        </div>
+                        <!-- Timer and Limited Slots -->
+                        <div class="timer-container mt-8 animate-fade-up">
+                            <div class="flex justify-center items-center gap-4">
+                                <div>
+                                    <div id="days" class="timer-value">00</div>
+                                    <div class="timer-label">Days</div>
+                                </div>
+                                <div>:</div>
+                                <div>
+                                    <div id="hours" class="timer-value">00</div>
+                                    <div class="timer-label">Hours</div>
+                                </div>
+                                <div>:</div>
+                                <div>
+                                    <div id="minutes" class="timer-value">00</div>
+                                    <div class="timer-label">Minutes</div>
+                                </div>
+                                <div>:</div>
+                                <div>
+                                    <div id="seconds" class="timer-value">00</div>
+                                    <div class="timer-label">Seconds</div>
+                                </div>
+                            </div>
+                            <p class="limited-slots-message">
+                                LIMITED SPOTS AVAILABLE THIS MONTH! ACT FAST!
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Image Section -->
+                    <div class="animate-scale-in relative overflow-hidden"> <!-- Added overflow-hidden here -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-200 to-blue-200 rounded-3xl transform rotate-3 opacity-60"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tl from-yellow-100 to-green-100 rounded-3xl transform -rotate-2 opacity-40"></div>
+                        <img
+                            src="https://ik.imagekit.io/ewoioxq0g/Leo%20Herrera/DSC04035%20(1).jpg?updatedAt=1751729317365"
+                            alt="Junior Golfer Excelling"
+                            class="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/4CAF50/ffffff?text=Junior+Golfer+Success';"
+                        >
+                        <div class="hero-image-overlay"></div>
+                        <!-- Floating testimonial preview - Adjusted position -->
+                        <div class="absolute bottom-4 left-4 bg-white rounded-2xl p-4 shadow-xl border border-gray-100 max-w-xs">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="flex">
+                                    <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                    <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                    <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                    <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                    <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-600 italic">"My son made the high school team thanks to Leo! He's so much more confident and loves golf even more."</p>
+                            <p class="text-xs text-gray-500 mt-1">- Sarah P., Golf Parent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- COMMON GOLF PROBLEMS SECTION -->
+        <section id="common-problems" class="section-enhanced bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Are These Your Junior Golfer's Frustrations?</h2>
+                    <p class="section-subtitle">
+                        If your child consistently faces these challenges, they're not alone. This call is designed to help them overcome them and thrive.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                        <div class="icon-enhanced" style="padding: 0.4rem; margin-bottom: 0.4rem;">
+                            <i data-lucide="chevrons-left" class="h-5 w-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold mb-2 text-red-600">Inconsistent Play</h3>
+                        <p class="text-xs text-gray-600 mb-2">
+                            Does your junior hit amazing shots sometimes, but struggle with consistency on the course?
+                        </p>
+                    </div>
+                    <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                        <div class="icon-enhanced" style="padding: 0.4rem; margin-bottom: 0.4rem;">
+                            <i data-lucide="cloud-off" class="h-5 w-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold mb-2 text-red-600">Gets Down on Themselves</h3>
+                        <p class="text-xs text-gray-600 mb-2">
+                            Does your child get easily frustrated or negative after a bad shot or hole?
+                        </p>
+                    </div>
+                    <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                        <div class="icon-enhanced" style="padding: 0.4rem; margin-bottom: 0.4rem;">
+                            <i data-lucide="gantt-chart" class="h-5 w-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold mb-2 text-red-600">Nervous in Tournaments</h3>
+                        <p class="text-xs text-gray-600 mb-2">
+                            Does your junior struggle with nerves or performing their best in competitive situations?
+                        </p>
+                    </div>
+                    <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                        <div class="icon-enhanced" style="padding: 0.4rem; margin-bottom: 0.4rem;">
+                            <i data-lucide="map-pin" class="h-5 w-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold mb-2 text-red-600">Unsure How to Practice</h3>
+                        <p class="text-xs text-gray-600 mb-2">
+                            Are they spending hours practicing but not seeing real improvement on the course?
+                        </p>
+                    </div>
+                     <div class="card-enhanced animate-fade-up md:col-span-2" style="padding: 1.25rem;">
+                        <div class="icon-enhanced" style="padding: 0.4rem; margin-bottom: 0.4rem;">
+                            <i data-lucide="frown" class="h-5 w-5"></i>
+                        </div>
+                        <h3 class="text-base font-bold mb-2 text-red-600">Losing Enjoyment</h3>
+                        <p class="text-xs text-gray-600 mb-2">
+                            Is the pressure of golf making them lose the fun and joy of the game?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="text-xl text-gray-700 mb-6 font-semibold">
+                        If you said YES to any of these, this <strong>FREE</strong> call is your first step towards a breakthrough for your junior golfer. Let's tackle them together!
+                    </p>
+                    <a href="https://calendly.com/villaneabea1/30min" target="_blank" class="btn-primary btn-urgent">
+                        <i data-lucide="arrow-right" class="mr-2 h-5 w-5"></i>
+                        BOOK YOUR <strong>FREE</strong> STRATEGY CALL NOW!
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- BENEFITS SECTION -->
+        <section id="services" class="section-enhanced">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">How Your Free Junior Golf Strategy Call Will Transform Their Game</h2>
+                    <p class="section-subtitle">
+                        During our <strong>free junior golf strategy call</strong>, we'll dive deep into your junior's game, identify hidden opportunities for growth, and outline a clear path to more confident play and lasting enjoyment.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 shadow-xl border border-green-100 mb-12 animate-fade-up">
+                    <h3 class="text-2xl font-bold mb-3 text-center text-gray-800">Key Areas We'll Cover for Junior Golfers</h3>
+                    <p class="text-base text-gray-600 mb-6 text-center font-medium">Empowering Young Golfers for Success and Fun</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                            <div class="icon-enhanced"><i data-lucide="brain" class="h-5 w-5"></i></div>
+                            <h3 class="text-base font-bold mb-2">Junior Mental Toughness</h3>
+                            <p class="text-xs text-gray-600 mb-3">Help your child manage nerves, stay positive, and bounce back from tough shots on the course.</p>
+                            <div class="text-xs text-green-600 font-semibold">✨ Build unshakeable confidence.</div>
+                        </div>
+                        <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                            <div class="icon-enhanced"><i data-lucide="compass" class="h-5 w-5"></i></div>
+                            <h3 class="text-base font-bold mb-2">Smart Course Strategy for Kids</h3>
+                            <p class="text-xs text-gray-600 mb-3">Teach them how to think strategically, make smart decisions, and avoid common mistakes.</p>
+                            <div class="text-xs text-green-600 font-semibold">⛳ Play smarter, not just harder.</div>
+                        </div>
+                        <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                            <div class="icon-enhanced"><i data-lucide="target" class="h-5 w-5"></i></div>
+                            <h3 class="text-base font-bold mb-2">Foundational Short Game Skills</h3>
+                            <p class="text-xs text-gray-600 mb-3">Develop precise putting and chipping techniques to save strokes around the green.</p>
+                            <div class="text-xs text-green-600 font-semibold">🎯 Master the scoring zone.</div>
+                        </div>
+                        <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                            <div class="icon-enhanced"><i data-lucide="arrow-right" class="h-5 w-5"></i></div>
+                            <h3 class="text-base font-bold mb-2">Consistent Driving & Accuracy</h3>
+                            <p class="text-xs text-gray-600 mb-3">Improve tee shots for more fairways hit and increased distance, building a solid foundation.</p>
+                            <div class="text-xs text-green-600 font-semibold">🚀 Hit it longer and straighter.</div>
+                        </div>
+                        <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                            <div class="icon-enhanced"><i data-lucide="clipboard-list" class="h-5 w-5"></i></div>
+                            <h3 class="text-base font-bold mb-2">Custom Junior Practice Plan</h3>
+                            <p class="text-xs text-gray-600 mb-3">Receive a clear, fun roadmap for efficient practice that targets their specific areas for growth.</p>
+                            <div class="text-xs text-green-600 font-semibold">📝 Practice with purpose, see results.</div>
+                        </div>
+                        <div class="card-enhanced animate-fade-up" style="padding: 1.25rem;">
+                            <div class="icon-enhanced"><i data-lucide="trophy" class="h-5 w-5"></i></div>
+                            <h3 class="text-base font-bold mb-2">Preparing for Competitive Golf</h3>
+                            <p class="text-xs text-gray-600 mb-3">Strategies for tournament play, high school golf, and even college recruitment pathways.</p>
+                            <div class="text-xs text-green-600 font-semibold">🏆 Play their best when it counts.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <!-- Changed this button to scroll to contact -->
+                    <a href="#contact" class="btn-primary">
+                        <i data-lucide="golf" class="mr-2 h-5 w-5"></i>
+                        Let's Elevate Your Junior's Golf Game! BOOK YOUR <strong>FREE</strong> CALL!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION: Tailored Coaching for Every Junior Golfer -->
+        <section id="tailored-coaching" class="section-enhanced bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Coaching Crafted for Every Stage of Junior Golf</h2>
+                    <p class="section-subtitle">
+                        We understand that junior golfers, and their parents, have unique needs at different ages and skill levels. Our approach adapts to support your child's journey, from first swing to college aspirations.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-enhanced animate-fade-up">
+                        <!-- Placeholder Image for Ages 8-12 -->
+                        <img src="https://ik.imagekit.io/ewoioxq0g/Leo%20Herrera/IMG_5503.HEIC?updatedAt=1752951243361">
+                        <div class="icon-enhanced"><i data-lucide="smile" class="h-6 w-6"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-green-700">Ages 8-12: Fun & Fundamentals</h3>
+                        <p class="text-gray-600 mb-4">
+                            For our youngest golfers, it's all about making golf an exciting and positive experience. We focus on building fundamental skills through engaging, low-pressure sessions that foster a lifelong love for the game. Parents will see their child develop character, discipline, and a healthy approach to competition.
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li>Focus on enjoyment & basic mechanics.</li>
+                            <li>Develop foundational golf skills.</li>
+                            <li>Build character and sportsmanship.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-enhanced animate-fade-up">
+                        <!-- Placeholder Image for Ages 13-16 -->
+                        <img src="https://ik.imagekit.io/ewoioxq0g/Leo%20Herrera/IMG_3321.HEIC?updatedAt=1752951257844">
+                        <div class="icon-enhanced"><i data-lucide="award" class="h-6 w-6"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-green-700">Ages 13-16: Skill Refinement & Competitive Edge</h3>
+                        <p class="text-gray-600 mb-4">
+                            This is where we refine existing skills and introduce more advanced strategies. For juniors aiming to lower scores or make their school team, our coaching emphasizes mental resilience, course management, and efficient practice routines. We prepare them for the next level of competitive play.
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li>Refine technique & strategic thinking.</li>
+                            <li>Improve mental game for competition.</li>
+                            <li>Prepare for high school teams.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-enhanced animate-fade-up">
+                        <!-- Placeholder Image for Ages 17-19 -->
+                        <img src="https://ik.imagekit.io/ewoioxq0g/Leo%20Herrera/IMG_3358.HEIC?updatedAt=1752951260715" alt="Junior golfer ages 17-19" class="coaching-stage-image">
+                        <div class="icon-enhanced"><i data-lucide="graduation-cap" class="h-6 w-6"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-green-700">Ages 17-19: Elite Performance & College Prep</h3>
+                        <p class="text-gray-600 mb-4">
+                            For serious high school golfers with college aspirations, our coaching intensifies. We focus on elite skill development, advanced tournament preparation, and showcasing their abilities for college recruitment. This stage is about maximizing potential and navigating the path to collegiate golf opportunities.
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                            <li>Advanced skill & tournament prep.</li>
+                            <li>Strategic college recruitment guidance.</li>
+                            <li>Maximize competitive performance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="text-xl text-gray-700 mb-6 font-semibold">
+                        No matter your junior's age or current skill, our personalized approach ensures they get the right guidance to thrive.
+                    </p>
+                    <a href="https://calendly.com/lherrera20-1/1-1-call-with-me" class="btn-primary btn-urgent">
+                        <i data-lucide="calendar" class="mr-2 h-5 w-5"></i>
+                        BOOK YOUR <strong>FREE</strong> STRATEGY CALL NOW!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEET YOUR COACH SECTION -->
+        <section id="meet-coach" class="section-enhanced bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="animate-fade-up">
+                        <div class="inline-flex items-center bg-green-100 rounded-full px-4 py-2 mb-6">
+                            <span class="text-sm font-semibold text-green-700">👋 Meet Your Junior's Coach</span>
+                        </div>
+                        <h2 class="section-title text-left">Help Your Child Excel in Golf and Life!</h2>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Discover a supportive and effective approach that helps young golfers master their mental game, develop strong skills, and truly love golf.
+                        </p>
+                        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Hi, I'm Leo! With <strong>15+ years of experience</strong> coaching junior athletes and a specialization in golf psychology, I empower young golfers (ages 8-19) to overcome challenges and unlock their full potential. My coaching blends fun, development, and proven strategies to build not just better golfers, but confident young individuals.
+                        </p>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start justify-center md:justify-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full mr-4 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="h-3 w-3 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-gray-800">15+ Years Youth Coaching:</span>
+                                    <span class="text-gray-700 ml-1">Extensive experience guiding young athletes to achieve their sporting goals.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start justify-center md:justify-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full mr-4 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="h-3 w-3 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-gray-800">Certified Junior Performance Coach:</span>
+                                    <span class="text-gray-700 ml-1">Specialized training in youth sports psychology and development.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start justify-center md:justify-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full mr-4 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="h-3 w-3 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-gray-800">Holistic Development Partner:</span>
+                                    <span class="text-gray-700 ml-1">Beyond golf, we focus on life skills like focus, discipline, and resilience.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start justify-center md:justify-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full mr-4 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i data-lucide="check" class="h-3 w-3 text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-gray-800">Passionate & Patient Support:</span>
+                                    <span class="text-gray-700 ml-1">Committed to making golf fun and rewarding for every junior golfer.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 border border-green-100 mb-8">
+                            <p class="text-gray-700 italic text-lg">
+                                "My mission is to help junior golfers not only improve their scores but also build confidence, develop a love for the game, and learn valuable life lessons through golf."
+                                <br>- Leo
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <!-- Changed this button to scroll to contact -->
+                            <a href="#contact" class="btn-primary">
+                                <i data-lucide="message-circle" class="mr-2 h-5 w-5"></i>
+                                Let's Build Their Winning Strategy!
+                            </a>
+                            <!-- This button now scrolls to testimonials -->
+                            <a href="#testimonials" class="btn-secondary">
+                                <i data-lucide="star" class="mr-2 h-4 w-4"></i>
+                                Read Success Stories
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="animate-scale-in relative overflow-hidden"> <!-- Added overflow-hidden here -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-200 to-blue-200 rounded-3xl transform -rotate-3"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tl from-yellow-100 to-green-100 rounded-3xl transform rotate-2 opacity-60"></div>
+                        <img
+                            src="https://placehold.co/600x400/4CAF50/ffffff?text=Leo+-+Junior+Golf+Coach"
+                            alt="Leo - Junior Golf Performance Coach"
+                            class="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
+                            onerror="this.onerror=null; this.src='https://placehold.co/600x400/4CAF50/ffffff?text=Leo+-+Junior+Golf+Coach';"
+                        >
+                        <!-- Floating achievement badges - Adjusted position slightly to be within bounds -->
+                        <div class="absolute top-4 right-4 bg-white rounded-2xl p-3 shadow-xl border border-gray-100">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-600">15+</div>
+                                <div class="text-xs text-gray-600">Years Youth Coaching</div>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-4 left-4 bg-white rounded-2xl p-3 shadow-xl border border-gray-100">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-600">98%</div>
+                                <div class="text-xs text-gray-600">Parent Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials" class="section-enhanced bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Success Stories from Junior Golfers & Their Parents</h2>
+                    <p class="section-subtitle">
+                        Hear how young golfers transformed their game, built confidence, and started loving golf even more.
+                    </p>
+                </div>
+
+                <div id="testimonial-carousel-wrapper" class="relative overflow-hidden w-full py-4">
+                    <div id="testimonial-carousel-track" class="flex gap-4">
+                        <!-- Testimonial Cards -->
+                        <div class="testimonial-card">
+                            <div class="star-rating flex mb-1">
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-4 italic leading-relaxed">
+                                "Our daughter was getting frustrated with golf, but after working with Leo, her whole attitude changed! She's more focused, enjoys practicing, and even won her first junior tournament. We're so proud!"                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/120x120/4CAF50/ffffff?text=MP" alt="Maria P." class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.onerror=null; this.src='https://placehold.co/120x120/4CAF50/ffffff?text=MP';">
+                                <cite>
+                                    <p class="font-semibold text-base">Maria P.</p>
+                                    <p class="text-xs text-gray-500">Parent of a 12-year-old Golfer</p>
+                                    <p class="text-xs text-green-600 font-semibold">Tournament Win & Renewed Joy</p>
+                                </cite>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="star-rating flex mb-1">
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-4 italic leading-relaxed">
+                                "I used to get so nervous before matches, but Leo taught me how to stay calm and focus. Now I actually look forward to playing under pressure! My scores are getting better, and I feel way more confident."                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/120x120/4CAF50/ffffff?text=JL" alt="Jake L." class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.onerror=null; this.src='https://placehold.co/120x120/4CAF50/ffffff?text=JL';">
+                                <div>
+                                    <p class="font-semibold text-base">Jake L. (16 years old)</p>
+                                    <p class="text-xs text-gray-500">High School Golfer</p>
+                                    <p class="text-xs text-green-600 font-semibold">Increased Confidence & Lower Scores</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="star-rating flex mb-1">
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-4 italic leading-relaxed">
+                                "Leo's coaching helped my son understand how to practice smarter. He's not just hitting balls aimlessly anymore; he has a clear plan and actually enjoys his practice sessions. It's made a noticeable difference in his game."                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/120x120/4CAF50/ffffff?text=RS" alt="Robert S." class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.onerror=null; this.src='https://placehold.co/120x120/4CAF50/ffffff?text=RS';">
+                                <div>
+                                    <p class="font-semibold text-base">Robert S.</p>
+                                    <p class="text-xs text-gray-500">Parent of a 14-year-old Golfer</p>
+                                    <p class="text-xs text-green-600 font-semibold">More Effective Practice</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="star-rating flex mb-1">
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                                <i data-lucide="star" class="h-4 w-4 text-yellow-400 fill-current"></i>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-4 italic leading-relaxed">
+                                "I thought golf was just about swinging, but Leo showed me how much strategy matters. I'm making better decisions on the course, and it's actually fun to think through each hole now. My scores have definitely improved!"
+                            </p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/120x120/4CAF50/ffffff?text=ET" alt="Emily T." class="w-10 h-10 rounded-full object-cover mr-3" onerror="this.onerror=null; this.src='https://placehold.co/120x120/4CAF50/ffffff?text=ET';">
+                                <div>
+                                    <p class="font-semibold text-base">Emily T. (15 years old)</p>
+                                    <p class="text-xs text-gray-500">Aspiring College Golfer</p>
+                                    <p class="text-xs text-green-600 font-semibold">Smarter Course Management</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action below testimonials -->
+                <div class="text-center bg-white rounded-3xl p-8 shadow-xl border border-green-100 mt-12">
+                    <h3 class="text-2xl font-bold mb-4">Ready for Your Junior to Excel?</h3>
+                    <p class="text-gray-600 mb-6">Don't let another round go by without a plan. Book a <strong>free strategy call</strong> to see how your junior golfer can reach their full potential and truly enjoy the game.</p>
+                    <a href="#contact" class="btn-primary btn-urgent">
+                        <i data-lucide="calendar" class="mr-2 h-5 w-5"></i>
+                        Secure Your <strong>FREE</strong> Strategy Call Now!
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ SECTION -->
+        <section id="faq" class="section-enhanced">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Your Junior Golf Strategy Questions, Answered</h2>
+                    <p class="section-subtitle">
+                        Everything parents and junior golfers need to know about the <strong>free strategy call</strong>.
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <div class="card-enhanced animate-fade-up">
+                        <div class="faq-item">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none group">
+                                <span class="font-semibold text-base group-hover:text-green-600 transition-colors">Who is this <strong>free strategy call</strong> for?</span>
+                                <i data-lucide="chevron-down" class="h-5 w-5 text-gray-500 transition-transform duration-200"></i>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-6">
+                                <p class="text-gray-600 leading-relaxed">
+                                    This call is specifically designed for parents of junior golfers (ages 8-19) who are committed to helping their child improve their golf game, build confidence, and potentially pursue high school or college golf. It's for juniors of all skill levels who are open to learning new mental strategies and practicing smarter.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-enhanced animate-fade-up">
+                        <div class="faq-item">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none group">
+                                <span class="font-semibold text-base group-hover:text-green-600 transition-colors">What can we expect during the <strong>30-minute call</strong>?</span>
+                                <i data-lucide="chevron-down" class="h-5 w-5 text-gray-500 transition-transform duration-200"></i>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-6">
+                                <p class="text-gray-600 leading-relaxed">
+                                    During our <strong>30-minute call</strong>, we'll discuss your junior's current golf challenges, their goals, and their playing habits. I'll provide actionable insights and a personalized outline of strategies they can immediately implement to start seeing improvements in their mental game, course management, and overall scores. This is not a swing analysis, but a strategic game plan focused on their development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-enhanced animate-fade-up">
+                        <div class="faq-item">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none group">
+                                <span class="font-semibold text-base group-hover:text-green-600 transition-colors">Is this a sales pitch for a coaching program?</span>
+                                <i data-lucide="chevron-down" class="h-5 w-5 text-gray-500 transition-transform duration-200"></i>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-6">
+                                <p class="text-gray-600 leading-relaxed">
+                                    While I do offer more in-depth coaching and support for junior golfers, the <strong>free strategy call</strong> is genuinely about providing value. My goal is to give you clear, actionable strategies to help your child improve immediately. There's no obligation to continue beyond this call. If we're a good fit and you'd like more advanced support, we can discuss options, but the call itself is focused on helping your junior golfer.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-enhanced animate-fade-up">
+                        <div class="faq-item">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none group">
+                                <span class="font-semibold text-base group-hover:text-green-600 transition-colors">What do we need to prepare for the call?</span>
+                                <i data-lucide="chevron-down" class="h-5 w-5 text-gray-500 transition-transform duration-200"></i>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-6">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Just bring your enthusiasm and be ready to discuss your junior's golf game candidly! It's helpful if you have a general idea of their recent scores, common frustrations on the course, and what aspects of their game you're most eager to improve. No need for detailed stats or swing videos for this initial call. Both parents and junior golfers are welcome to join the call!
+                                </s>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-enhanced animate-fade-up">
+                        <div class="faq-item">
+                            <button class="faq-question w-full text-left p-4 flex justify-between items-center focus:outline-none group">
+                                <span class="font-semibold text-base group-hover:text-green-600 transition-colors">How do I book our <strong>free call</strong>?</span>
+                                <i data-lucide="chevron-down" class="h-5 w-5 text-gray-500 transition-transform duration-200"></i>
+                            </button>
+                            <div class="faq-answer hidden px-6 pb-6">
+                                <p class="text-gray-600 leading-relaxed">
+                                    It's simple and fast:
+                                </p>
+                                <ol class="list-decimal list-inside text-gray-600 space-y-2 mb-6">
+                                    <li>Click any of the "BOOK YOUR <strong>FREE</strong> STRATEGY CALL NOW!" buttons on this page.</li>
+                                    <li>You'll be directed to my secure scheduling page.</li>
+                                    <li>Choose a date and time that works best for you.</li>
+                                    <li>Confirm your booking, and you'll receive a calendar invite with call details.</li>
+                                </ol>
+                                <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+                                    <p class="text-green-800 font-semibold mb-2">Ready to help your junior golfer improve?</p>
+                                    <a href="https://calendly.com/lherrera20-1/1-1-call-with-me" target="_blank" class="btn-primary inline-flex items-center">
+                                        <i data-lucide="calendar" class="mr-2 h-5 w-5"></i>
+                                        Schedule Your <strong>FREE</strong> Strategy Call Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section-enhanced hero-enhanced">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="section-title">Ready for Your Junior to Play Their Best Golf?</h2>
+                        <p class="section-subtitle">
+                            Book your <strong>free 30-minute Strategy Call</strong>. Discover precisely how a personalized game plan can help your child build confidence, lower their scores, and truly enjoy every round. They'll gain clarity and a winning mindset on the course.
+                        </p>
+                        <div class="urgency-indicator mb-8">
+                            <i data-lucide="clock" class="h-4 w-4"></i>
+                            Limited spots for this month! Book now!
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 items-start">
+                        <!-- Right side: Professional Card -->
+                        <div class="animate-scale-in">
+                            <div class="card-enhanced text-center">
+                                <img
+                                    src="https://placehold.co/600x400/4CAF50/ffffff?text=Leo+-+Junior+Golf+Coach"
+                                    alt="Leo - Junior Golf Strategy Expert"
+                                    class="w-40 h-40 rounded-full mx-auto mb-6 object-cover shadow-xl ring-4 ring-green-100"
+                                >
+                                <h3 class="text-2xl font-bold mb-3">Let's Improve Their Game, Together!</h3>
+                                <p class="text-gray-600 mb-6 leading-relaxed">
+                                    I'm passionate about helping junior golfers unlock their potential and develop a lifelong love for the game. Let's discuss your child's challenges and outline a strategy to make their next rounds their best rounds. No pressure—just honest insights and actionable advice for their golf game.
+                                </p>
+
+                                <div class="bg-green-50 rounded-xl p-4 mb-6 border border-green-200">
+                                    <div class="grid grid-cols-2 gap-4 text-sm">
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold text-green-600">98%</div>
+                                            <div class="text-xs text-gray-600">Parent Satisfaction Rate</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="text-2xl font-bold text-green-600">Ages 8-19</div>
+                                            <div class="text-xs text-gray-600">Junior Focus</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2 text-sm text-gray-500">
+                                    <p class="flex items-center justify-center">
+                                        <i data-lucide="mail" class="h-4 w-4 mr-2"></i>
+                                        support@theconnectedgolfer.com
+                                    </p>
+                                    <p class="flex items-center justify-center">
+                                        <i data-lucide="clock" class="h-4 w-4 mr-2"></i>
+                                        Available Mon-Fri, 9AM-5PM EST
+                                    </p>
+                                    <p class="flex items-center justify-center">
+                                        <i data-lucide="map-pin" class="h-4 w-4 mr-2"></i>
+                                        Online Coaching, Global Reach
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Left side: Value Proposition & Contact Options -->
+                        <div class="animate-fade-up">
+                            <div class="bg-white rounded-3xl p-8 shadow-xl border border-green-100 mb-8">
+                                <h3 class="text-2xl font-bold mb-6 text-center">What Your Junior Will Gain in Their Free Golf Strategy Call:</h3>
+
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <div class="icon-enhanced mr-4 !mb-0">
+                                            <i data-lucide="search" class="h-5 w-5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold">Insightful Game Assessment</p>
+                                            <p class="text-gray-600 text-sm">Identify the key areas holding your junior's golf game back from reaching their full potential.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="icon-enhanced mr-4 !mb-0">
+                                            <i data-lucide="target" class="h-5 w-5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold">Personalized Improvement Outline</p>
+                                            <p class="text-gray-600 text-sm">A custom plan outlining actionable strategies for their mental game, course management, and practice.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="icon-enhanced mr-4 !mb-0">
+                                            <i data-lucide="trending-up" class="h-5 w-5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold">Their Fast-Track to Better Golf</p>
+                                            <p class="text-gray-600 text-sm">A clear path to lower scores and increased enjoyment on the course. Help them play smarter golf!</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="icon-enhanced mr-4 !mb-0">
+                                            <i data-lucide="gift" class="h-5 w-5"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold">Bonus Gift</p>
+                                            <p class="text-gray-600 text-sm">Your <strong>free</strong> "Junior Mental Game & Course Strategy Checklist" Ebook.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center space-y-4">
+                                <!-- This button now scrolls to contact -->
+                                <a href="https://calendly.com/lherrera20-1/1-1-call-with-me" class="btn-primary btn-urgent w-full justify-center text-lg py-4">
+                                    <i data-lucide="calendar" class="mr-3 h-6 w-6"></i>
+                                    BOOK YOUR <strong> FREE </strong> STRATEGY CALL NOW
+                                </a>
+
+                                <p class="text-sm text-gray-500">⚡ Typically books within 24-48 hours</p>
+
+                                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                                    <a href="mailto:support@theconnectedgolfer.com" class="btn-secondary flex-1 justify-center">
+                                        <i data-lucide="mail" class="mr-2 h-4 w-4"></i>
+                                        Shoot an Email
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/leopoldo-herrera-88a1a0237/" target="_blank" class="btn-secondary flex-1 justify-center">
+                                        <i data-lucide="linkedin" class="mr-2 h-4 w-4"></i>
+                                        Let's connect on LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Additional trust signals -->
+                    <div class="text-center mt-12 pt-8 border-t border-green-200">
+                        <p class="text-gray-600 mb-4">
+                            <strong>🔒 Totally Confidential</strong> • <strong>📞 Zero Pressure</strong> • <strong>💝 Real Value, Guaranteed</strong>
+                        </p>
+                        <p class="text-sm text-gray-500 italic">
+                            "Every conversation starts with truly understanding what your junior's golf game needs. I'm here to help, not push." - Leo
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-white font-bold text-xl mb-4">Leo - Junior Golf Coach</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        Your dedicated Junior Golf Game Strategy Partner. I provide insights and personalized plans to help young golfers master their mental game, refine course management, and ultimately reach their full potential.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="linkedin" class="h-5 w-5"></i>
+                        </a>
+                        <a href="mailto:support@theconnectedgolfer.com" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="mail" class="h-5 w-5"></i>
+                        </a>
+                        <a href="https://calendly.com/lherrera20-1/1-1-call-with-me" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="calendar" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">How I Help Junior Golfers</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Mental Game Development</li>
+                        <li>Course Strategy for Juniors</li>
+                        <li>Short Game Fundamentals</li>
+                        <li>Driving Consistency & Power</li>
+                        <li>Custom Practice Plans</li>
+                        <li>Tournament Preparation</li>
+                        <li>Confidence Building</li>
+                        <li>College Golf Pathways</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Get Started</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>
+                            <a href="https://calendly.com/villaneabea1/30min" target="_blank" class="hover:text-white transition-colors"><strong>Free</strong> Strategy Call</a>
+                        </li>
+                        <li>
+                            <a href="mailto:leogolfcoach@email.com" class="hover:text-white transition-colors">leogolfcoach@email.com</a>
+                        </li>
+                        <li>Available Mon-Fri</li>
+                        <li>Flexible Time Zones</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Leo - Junior Golf Coach. All rights reserved. | Empowering Young Golfers!</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING CTA BUTTON - NOW SCROLLS TO CONTACT -->
+    <a href="#contact" class="floating-cta">
+        <i data-lucide="calendar" class="h-5 w-5"></i>
+        Ready for Your Junior's Best Golf?
+        <span class="text-xs bg-white/20 px-2 py-1 rounded-full"><strong>FREE</strong></span>
+    </a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-fade-up, .animate-scale-in').forEach(el => {
+                observer.observe(el);
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top >= 0 && rect.top <= windowHeight) {
+                    el.classList.add('in-view');
+                }
+            });
+
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqItem = button.closest('.faq-item');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const chevron = button.querySelector('i[data-lucide="chevron-down"]');
+
+                    const isOpen = answer && !answer.classList.contains('hidden');
+                    document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                        if (otherAnswer && otherAnswer !== answer && !otherAnswer.classList.contains('hidden')) {
+                            otherAnswer.classList.add('hidden');
+                            const otherChevron = otherAnswer.closest('.faq-item')?.querySelector('i[data-lucide="chevron-down"]');
+                            if (otherChevron) {
+                                otherChevron.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+
+                    if (answer) {
+                        if (isOpen) {
+                            answer.classList.add('hidden');
+                            if (chevron) {
+                                chevron.style.transform = 'rotate(0deg)';
+                            }
+                        } else {
+                            answer.classList.remove('hidden');
+                            if (chevron) {
+                                chevron.style.transform = 'rotate(180deg)';
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Floating CTA behavior
+            const floatingCTA = document.querySelector('.floating-cta');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (floatingCTA) {
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        floatingCTA.style.transform = 'translateY(100px)';
+                        floatingCTA.style.opacity = '0';
+                    } else {
+                        floatingCTA.style.transform = 'translateY(0)';
+                        floatingCTA.style.opacity = '1';
+                    }
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // Number counter animation (for results section)
+            const numberCounters = document.querySelectorAll('.result-number');
+            const animatedNumbers = new Set();
+            const animateNumber = (element) => {
+                if (animatedNumbers.has(element)) {
+                    return;
+                }
+
+                const finalValue = element.getAttribute('data-final-value');
+                const numericMatch = finalValue.match(/(\d+(\.\d+)?)/);
+                const numericTarget = numericMatch ? parseFloat(numericMatch[1]) : 0;
+
+                let current = 0;
+                const duration = 1500;
+                const step = numericTarget / (duration / 16);
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= numericTarget) {
+                        clearInterval(timer);
+                        element.textContent = finalValue;
+                        animatedNumbers.add(element);
+                    } else {
+                        if (Number.isInteger(numericTarget)) {
+                            element.textContent = current.toFixed(0);
+                        } else {
+                            element.textContent = current.toFixed(0); // Changed from 2 to 0 for consistency
+                        }
+                    }
+                }, 16);
+            };
+
+            const resultsSection = document.getElementById('results');
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const numbersInView = entry.target.querySelectorAll('.result-number');
+                        numbersInView.forEach(numElement => {
+                            animateNumber(numElement);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            });
+
+            if (resultsSection) {
+                sectionObserver.observe(resultsSection);
+            }
+
+            // Infinite Testimonial Carousel functionality
+            const testimonialCarouselTrack = document.getElementById('testimonial-carousel-track');
+            let originalTestimonialCards = Array.from(testimonialCarouselTrack.querySelectorAll('.testimonial-card'));
+
+            if (testimonialCarouselTrack && originalTestimonialCards.length > 0) {
+                originalTestimonialCards.forEach(card => {
+                    testimonialCarouselTrack.appendChild(card.cloneNode(true));
+                });
+
+                const calculateAndSetAnimation = () => {
+                    let totalOriginalWidth = 0;
+                    const gap = parseFloat(window.getComputedStyle(testimonialCarouselTrack).gap);
+
+                    originalTestimonialCards.forEach(card => {
+                        totalOriginalWidth += card.offsetWidth + gap;
+                    });
+                    totalOriginalWidth -= gap;
+
+                    testimonialCarouselTrack.style.setProperty('--scroll-distance', `-${totalOriginalWidth}px`);
+                    const animationSpeed = 0.50;
+                    const duration = totalOriginalWidth / animationSpeed;
+                    testimonialCarouselTrack.style.setProperty('--animation-duration', `${duration / 1000}s`);
+                    testimonialCarouselTrack.addEventListener('mouseenter', () => {
+                        testimonialCarouselTrack.style.animationPlayState = 'paused';
+                    });
+                    testimonialCarouselTrack.addEventListener('mouseleave', () => {
+                        testimonialCarouselTrack.style.animationPlayState = 'running';
+                    });
+                };
+                calculateAndSetAnimation();
+                window.addEventListener('resize', calculateAndSetAnimation);
+            }
+
+            // Countdown Timer
+            const updateCountdown = () => {
+                const now = new Date();
+                // Set the target date for the end of the current month
+                const targetDate = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59); // Last second of the current month
+
+                const timeLeft = targetDate - now;
+
+                if (timeLeft < 0) {
+                    // If the countdown is over, display 0s and an expired message
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    const limitedMessage = document.querySelector('.limited-slots-message');
+                    if (limitedMessage) {
+                        limitedMessage.textContent = 'This offer has expired! Check back next month.';
+                        limitedMessage.style.animation = 'none'; // Stop pulsing
+                    }
+                    return;
+                }
+
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            };
+
+            // Update the countdown every second
+            setInterval(updateCountdown, 1000);
+            // Initial call to display the countdown immediately
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>
+
